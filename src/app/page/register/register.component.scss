@@ -1,0 +1,22 @@
+form {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form > * {
+    margin: 10px auto 10px auto;
+    width: 90%
+}
+
+mat-spinner {
+    position: fixed;
+    top: calc(40% - 50px);
+    left: calc(50% - 50px);
+}
+
+form > button {
+    width: 150px;
+}

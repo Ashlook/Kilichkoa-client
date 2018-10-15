@@ -8,11 +8,9 @@ import { AuthService } from '../../_service/auth.service';
 })
 export class AccountComponent implements OnInit {
 
-
-  constructor(authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
-    // Check if user is logged
   }
 
 }

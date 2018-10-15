@@ -1,3 +1,4 @@
-<p>
-  signed works!
-</p>
+<div>
+  <span class="welcome-msg">Bonjour <a routerLink="/profil" matTooltip="Voir le profil" class="profil-link">{{username}}</a>.</span>
+  <button mat-raised-button class="action-button" color="accent" (click)="signoff()">Se deconnecter</button>
+</div>

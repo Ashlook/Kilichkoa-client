@@ -1,0 +1,72 @@
+import { NgModule } from '@angular/core';
+import {
+  MatCheckboxModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatInputModule,
+  MatListModule,
+  MatCardModule,
+  MatDividerModule,
+  MatNativeDateModule,
+  MatButtonModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
+  MatExpansionModule,
+  MatTooltipModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MAT_DATE_LOCALE,
+  MatToolbarModule,
+  MatTabsModule} from '@angular/material';
+
+@NgModule({
+  imports: [
+    MatCheckboxModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatListModule,
+    MatCardModule,
+    MatDividerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatToolbarModule,
+    MatTabsModule
+  ],
+  exports: [
+    MatCheckboxModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatListModule,
+    MatCardModule,
+    MatDividerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatToolbarModule,
+    MatTabsModule
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+  ],
+  declarations: []
+})
+export class MaterialModule { }

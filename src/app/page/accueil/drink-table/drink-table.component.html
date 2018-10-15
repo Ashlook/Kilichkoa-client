@@ -1,0 +1,58 @@
+<mat-expansion-panel expanded>
+    <mat-expansion-panel-header collapsedHeight="45px" expandedHeight="45px">
+        <mat-panel-title>
+            Tournées
+        </mat-panel-title>
+        <mat-panel-description>
+            Liste des dernières tournées
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="drink-colum-header"> Prix </th>
+            <td mat-cell *matCellDef="let element" class="drink-colum-price"> {{element.price | currency:'EUR'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="user">
+            <th mat-header-cell *matHeaderCellDef class="drink-colum-header drink-colum-header-user"> Payeur </th>
+            <td mat-cell *matCellDef="let element"> {{element.user.username}} </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef class="drink-colum-header drink-colum-header-date"> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date_drink | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="drinkers">
+            <th mat-header-cell *matHeaderCellDef class="drink-colum-header"> Buveurs </th>
+            <td mat-cell *matCellDef="let element"> {{formatDrinkers(element.drinkers)}} </td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef class="drink-colum-header drink-colum-action"></th>
+            <td mat-cell *matCellDef="let element">
+                <button disabled matTooltip="Editer" matTooltipPosition="before" mat-raised-button color="primary" *ngIf="canEdit(element.user)" class="drink-btn-edit">E</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="remove">
+            <th mat-header-cell *matHeaderCellDef class="drink-colum-header drink-colum-action"></th>
+            <td mat-cell *matCellDef="let element">
+                <button matTooltip="Supprimer" matTooltipPosition="after" mat-raised-button color="accent" *ngIf="admin" class="drink-btn-edit"
+                    (click)="deleteDrink(element)">R</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="drink-row-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="drink-row"></tr>
+    </table>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons class="drink-paginator"></mat-paginator>
+    <mat-action-row class="drink-action-row">
+        <button mat-raised-button 
+            class="action-button" 
+            color="primary" 
+            [disabled]="!active" 
+            [matTooltip]="tooltipMsg" 
+            matTooltipPosition="before"
+            [matTooltipDisabled]="active" 
+            (click)="goToNewDrink()">
+            Ajouter une tournée
+        </button>
+    </mat-action-row>
+    {{active + ' ' + admin}}
+</mat-expansion-panel>

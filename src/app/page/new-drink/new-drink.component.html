@@ -1,0 +1,53 @@
+<mat-card>
+    <mat-card-title class="card-title">Nouvelle tournée</mat-card-title>
+    <form [formGroup]="drinkForm" (submit)="onSubmit()">
+        <mat-form-field *ngIf="userAuth.admin">
+            <mat-select formControlName="user" required>
+                <mat-option *ngFor="let user of activeUsers" [value]="user">{{ user.username }}</mat-option>
+            </mat-select>
+            <mat-label>Payeur</mat-label>
+            <mat-hint>Celui qui a payé la tournée.</mat-hint>
+        </mat-form-field>
+        <mat-form-field *ngIf="!userAuth.admin">
+            <input 
+                matInput 
+                type="text" 
+                formControlName="user" 
+                required 
+                [value]="userAuth.username" 
+                readonly
+                matTooltip="Vous devez être admin pour pouvoir changer l'utilisateur"/>
+            <mat-label>Payeur</mat-label>
+            <mat-hint>Celui qui a payé la tournée.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" placeholder="Prix" formControlName="price" min="0" required/>
+            <mat-hint>Prix de la tournée.</mat-hint>
+            <mat-error>{{getErrorMessage(price)}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="date-picker">
+            <input formControlName="date_drink" matInput [matDatepicker]="date" [max]="dateMax" placeholder="Choisissez une date" (click)="date.open()"
+                (focus)="date.open()" readonly required>
+            <mat-datepicker #date touchUi></mat-datepicker>
+            <mat-hint>Date de la tournée.</mat-hint>
+        </mat-form-field>
+
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Buveurs *</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-selection-list formControlName="drinkers">
+                    <mat-list-option *ngFor="let user of activeUsers;" [value]="user" [selected]="isSelected(user)">
+                        {{user.username}}
+                    </mat-list-option>
+                </mat-selection-list>
+            </mat-card-content>
+        </mat-card>
+
+        <button mat-raised-button class="action-button" color="primary" [disabled]="submitted || !drinkForm.valid">Enregistrer</button>
+    </form>
+    <mat-spinner *ngIf="submitted"></mat-spinner>
+</mat-card>

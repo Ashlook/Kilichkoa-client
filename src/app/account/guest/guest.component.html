@@ -1,3 +1,14 @@
-<p>
-  guest works!
-</p>
+<div>
+    <form (submit)="onSubmit()" [formGroup]="loginForm">
+        <mat-form-field color="accent" class="login-form-field">
+            <input matInput placeholder="Utilisateur" formControlName="username" required/>
+            <mat-error>Champs obligatoire</mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent" class="login-form-field">
+            <input matInput placeholder="Mot de passe" type="password" formControlName="password" required/>
+            <mat-error>Champs obligatoire</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="accent" class="action-button">Log-in</button>
+        <button mat-raised-button color="accent" class="action-button" type="button" (click)="goToRegister()">+</button>
+    </form>
+</div>

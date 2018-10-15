@@ -1,0 +1,51 @@
+table {
+	width: 100%;
+}
+
+.drink-row {
+	height: 35px;
+}
+
+.drink-row-header {
+	height: 45px;
+}
+
+.drink-colum-header {
+	font-size: 18px;
+}
+
+.drink-colum-header-user, .drink-colum-header-date {
+	width: 120px;
+}
+
+
+.drink-colum-price {
+	text-align: right;
+	width: 50px;
+	padding-right: 30px;
+}
+
+.drink-colum-user {
+	width: 150px;
+}
+
+.drink-colum-action {
+	width: 35px;
+}
+
+.drink-btn-edit {
+	width: 30px;
+	height: 30px;
+	min-width: 30px;
+	line-height: 30px;
+	padding: 0;
+	border-radius: 30px;
+}
+
+.drink-paginator {
+	height: 40px;
+}
+
+.drink-action-row {
+	padding: 8px 8px 8px 24px;
+}

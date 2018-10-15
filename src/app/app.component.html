@@ -1,15 +1,7 @@
-<header>
-  <div class="left">
-    TITLE
-  </div>
-  <div class="right">
-    <app-account></app-account>
-  </div>
-</header>
-<section>
-  blabla
-  <router-outlet></router-outlet>
-</section>
-<footer>
-  FOOTER
-</footer>
+<mat-toolbar color="primary" class="toolbar">
+  <h1>
+      <a routerLink="/accueil">{{appName}}</a>
+  </h1>
+  <app-account></app-account>
+</mat-toolbar>
+<router-outlet (activate)="onActivate($event)" ></router-outlet>

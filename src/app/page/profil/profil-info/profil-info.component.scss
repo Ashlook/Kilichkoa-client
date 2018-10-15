@@ -1,0 +1,46 @@
+form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form > * {
+    margin: 10px auto 10px auto;
+    width: 90%;
+}
+
+mat-spinner {
+    position: fixed;
+    top: calc(40% - 50px);
+    left: calc(50% - 50px);
+}
+
+form > button {
+    width: 150px;
+}
+
+mat-form-field:last-of-type, mat-form-field:nth-of-type(4) {
+    padding: 15px 30px 0 30px;
+    margin-top: 15px;
+    border-top: 1px dashed black;
+}
+
+.status {
+    text-align: right;
+    button {
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        min-width: 20px;
+        max-width: 20px;
+        padding: 0;
+        border-radius: 10px;
+        margin-left: 4px;
+    }
+}
+
+.red {
+    color: #f44336;
+}
+

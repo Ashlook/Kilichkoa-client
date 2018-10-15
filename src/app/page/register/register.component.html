@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-title class="card-title">Créer un compte</mat-card-title>
+    <form (submit)="onSubmit()" [formGroup]="userForm">
+        <mat-form-field>
+            <input matInput placeholder="Nom d'utilisateur" formControlName="username" minlength="3" required/>
+            <mat-hint>Votre nom d'utilisateur</mat-hint>
+            <mat-error>{{getErrorMessage(username)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Nom de famille" formControlName="lastname" required/>
+            <mat-error>{{getErrorMessage(lastname)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Prénom" formControlName="firstname" required/>
+            <mat-error>{{getErrorMessage(firstname)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" placeholder="Mot de passe" formControlName="password" minlength="8" required/>
+            <mat-hint>Saisissez votre mot de passe, 8 caractères minimum</mat-hint>
+            <mat-error>{{getErrorMessage(password)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" placeholder="Vérification" formControlName="passwordCheck" minlength="8" required/>
+            <mat-hint>Retapez votre mot de passe</mat-hint>
+            <mat-error>{{getErrorMessage(passwordCheck)}}</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="submitted || !userForm.valid">Enregistrer</button>
+    </form>
+    <mat-spinner *ngIf="submitted"></mat-spinner>
+</mat-card>

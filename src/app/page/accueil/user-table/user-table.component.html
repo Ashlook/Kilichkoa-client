@@ -1,0 +1,26 @@
+<mat-expansion-panel expanded>
+    <mat-expansion-panel-header collapsedHeight="45px" expandedHeight="45px">
+        <mat-panel-title>
+            Utilisateurs
+        </mat-panel-title>
+        <mat-panel-description>
+            Liste des utilisateurs
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table mat-table [dataSource]="users">
+        <ng-container matColumnDef="user">
+            <th mat-header-cell *matHeaderCellDef class="user-colum-header user-colum-header-user"> Utilisateur </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="{'barre':!element.active}">{{element.username}}</td>
+            <td mat-footer-cell *matFooterCellDef class="user-colum-footer"> Balance générale </td>
+        </ng-container>
+        <ng-container matColumnDef="balance">
+            <th mat-header-cell *matHeaderCellDef class="user-colum-header"> Balance </th>
+            <td mat-cell *matCellDef="let element" class="user-colum-balance"> {{element.balance | currency:'EUR'}} </td>
+            <td mat-footer-cell *matFooterCellDef class="user-colum-balance"> {{balanceM | currency:'EUR'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="user-row-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="user-row"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+</mat-expansion-panel>

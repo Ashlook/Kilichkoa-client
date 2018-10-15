@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-title class="card-title">Mon profil</mat-card-title>
+    <mat-card-content>
+        <mat-tab-group class="tab-profil" dynamicHeight>
+            <mat-tab label="Informations">
+                <app-profil-info [user]="user"></app-profil-info>
+            </mat-tab>
+            <mat-tab label="Mes tournées">
+                <app-drink-table [drinks]="user.paid_drink"></app-drink-table>
+            </mat-tab>
+            <mat-tab label="Statistiques">
+                <app-profil-stats [balance]="user.balance" [paidDrink]="user.paid_drink.length"></app-profil-stats>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>

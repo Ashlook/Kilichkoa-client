@@ -1,0 +1,9 @@
+<mat-card>
+    <mat-card-title class="card-title">Accueil</mat-card-title>
+    <mat-card-content>
+        <div class="container">
+            <app-drink-table [drinks]="drinks" (deleted)="updateUsers()"></app-drink-table>
+            <app-user-table [users]="users"></app-user-table>
+        </div>
+    </mat-card-content>
+</mat-card>

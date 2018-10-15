@@ -1,3 +1,10 @@
-<ng-component>
-    
-</ng-component>
+<ng-container
+    *ngIf="authService.isAuth(); then signed; else guest">
+</ng-container>
+
+<ng-template #signed>
+    <app-signed></app-signed>
+</ng-template>
+<ng-template #guest>
+    <app-guest></app-guest>
+</ng-template>

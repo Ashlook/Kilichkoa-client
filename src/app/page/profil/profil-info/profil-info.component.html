@@ -1,0 +1,41 @@
+<mat-card>
+    <h4 [ngClass]="{'status':true, 'red':!user.active}">
+        {{status}}
+        <button mat-raised-button 
+            [color]="(user.active)?'primary':'warn'"
+            [matTooltip]="statusTooltipMsg" >
+            ?
+        </button>
+    </h4>
+    <form (submit)="onSubmit()" [formGroup]="userForm">
+        <mat-form-field>
+            <input matInput placeholder="Nom d'utilisateur" formControlName="username" minlength="3" readonly/>
+            <mat-hint>Ne peut être changé</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Nom de famille" formControlName="lastname" required/>
+            <mat-error>{{getErrorMessage(lastname)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Prénom" formControlName="firstname" required/>
+            <mat-error>{{getErrorMessage(firstname)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" placeholder="Nouveau mot de passe" formControlName="newPassword" minlength="8" />
+            <mat-hint>Saisissez votre nouveau mot de passe, 8 caractères minimum</mat-hint>
+            <mat-error>{{getErrorMessage(newPassword)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" placeholder="Vérification" formControlName="newPasswordCheck" minlength="8" />
+            <mat-hint>Retapez votre mot de passe</mat-hint>
+            <mat-error>{{getErrorMessage(newPasswordCheck)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="sep">
+            <input matInput type="password" placeholder="Mot de passe" formControlName="password" required/>
+            <mat-hint>Mot de passe actuel</mat-hint>
+            <mat-error>{{getErrorMessage(password)}}</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="submitted || !userForm.valid">Enregistrer</button>
+    </form>
+    <mat-spinner *ngIf="submitted"></mat-spinner>
+</mat-card>
